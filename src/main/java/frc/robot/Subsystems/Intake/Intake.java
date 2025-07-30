@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package frc.robot.Subsystems.Intake;
 
 import static frc.robot.GlobalConstants.ROBOT_MODE;
@@ -31,4 +32,8 @@ public class Intake extends Subsystem<IntakeStates> {
 		io.setWheelSpeed(getState().getWheelSpeed());
 		io.logData();
 	}
+=======
+public class Intake {
+    
+>>>>>>> 9872d74 (ghjg)
 }

@@ -1,5 +1,6 @@
 package frc.robot.Subsystems.Intake;
 
+<<<<<<< HEAD
 import static frc.robot.Subsystems.Intake.IntakeConstant.*;
 
 import edu.wpi.first.units.measure.Angle;
@@ -26,4 +27,8 @@ public enum IntakeStates implements SubsystemStates {
 	public Angle getPostition() {
 		return position;
 	}
+=======
+public enum IntakeStates {
+    
+>>>>>>> 9872d74 (ghjg)
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package frc.robot.Subsystems.Intake;
 
 import edu.wpi.first.units.measure.Angle;
@@ -9,4 +10,8 @@ public interface IntakeIO {
 	public void setPosition(Angle position);
 
 	void logData();
+=======
+public class IntakeIO {
+    
+>>>>>>> 9872d74 (ghjg)
 }

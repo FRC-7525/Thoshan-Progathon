@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package frc.robot.Subsystems.Intake;
 
 import static edu.wpi.first.units.Units.Degree;
@@ -34,4 +35,8 @@ public class IntakeConstant {
 			case SIM -> new PIDController(0.1, 0, 0);
 			case TESTING -> new PIDController(0.1, 0, 0);
 		};
+=======
+public class IntakeConstant {
+    
+>>>>>>> 9872d74 (ghjg)
 }

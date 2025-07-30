@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package frc.robot.Subsystems.Intake;
 
 import static edu.wpi.first.units.Units.RotationsPerSecond;
@@ -53,4 +54,8 @@ public class IntakeIONeo implements IntakeIO {
 		Logger.recordOutput("Intake/target speed", targetspeed);
 		Logger.recordOutput("Intake/target position", targetposition);
 	}
+=======
+public class IntakeIONeo {
+    
+>>>>>>> 9872d74 (ghjg)
 }

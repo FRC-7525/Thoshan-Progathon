@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package frc.robot.Subsystems.Intake;
 
 import static edu.wpi.first.units.Units.Degree;
@@ -70,4 +71,8 @@ public class IntakeIOSim implements IntakeIO {
 		Logger.recordOutput("Intake/Target position", targetPosition);
 		Logger.recordOutput("Intake/Target speed", targetSpeed);
 	}
+=======
+public class IntakeIOSim {
+    
+>>>>>>> 9872d74 (ghjg)
 }
