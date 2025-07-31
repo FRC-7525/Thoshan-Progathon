@@ -18,7 +18,7 @@ public class ShooterIOSim implements ShooterIO {
 
     public ShooterIOSim() {
         wheels = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getNEO(2), 1, 1), 
-        DCMotor.getNeo550(2), 
+        DCMotor.getNEO(2), 
         null);
 
         motorController = new BangBangController();
