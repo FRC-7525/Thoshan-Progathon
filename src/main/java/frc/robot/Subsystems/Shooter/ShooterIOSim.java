@@ -15,12 +15,19 @@ public class ShooterIOSim implements ShooterIO {
 	BangBangController motorController;
 	AngularVelocity targetSpeed;
 
+<<<<<<< HEAD
 	public ShooterIOSim() {
 		wheels = new FlywheelSim(
 			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(2), 1, 1),
 			DCMotor.getNEO(2),
 			null
 		);
+=======
+    public ShooterIOSim() {
+        wheels = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getNEO(2), 1, 1), 
+        DCMotor.getNEO(2), 
+        null);
+>>>>>>> 3d33c3b (Done with intake subsystem)
 
 		motorController = new BangBangController();
 		targetSpeed = RotationsPerSecond.zero();
