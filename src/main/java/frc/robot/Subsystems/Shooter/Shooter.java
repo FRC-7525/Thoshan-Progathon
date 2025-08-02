@@ -18,8 +18,8 @@ public class Shooter extends Subsystem<ShooterStates> {
 
     @Override
     protected void runState() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'runState'");
+        io.setWheelSpeed(getState().getWheelSpeed());
+        io.logData();
     }
     
 }

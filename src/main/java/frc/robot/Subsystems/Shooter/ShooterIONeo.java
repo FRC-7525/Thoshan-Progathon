@@ -11,6 +11,8 @@ import com.revrobotics.spark.config.SparkBaseConfig;
 import edu.wpi.first.math.controller.BangBangController;
 import edu.wpi.first.units.measure.AngularVelocity;
 
+import static frc.robot.Subsystems.Shooter.ShooterConstant.*;
+
 public class ShooterIONeo implements ShooterIO{
 
     SparkMax leftMotor;
@@ -22,8 +24,8 @@ public class ShooterIONeo implements ShooterIO{
 
     SparkBaseConfig sparkMaxConfig;
     public ShooterIONeo() {
-        leftMotor = new SparkMax(13, MotorType.kBrushless);
-        rightMotor = new SparkMax(14, MotorType.kBrushless);
+        leftMotor = new SparkMax(LEFT_MOTOR_ID, MotorType.kBrushless);
+        rightMotor = new SparkMax(RIGHT_MOTOR_ID, MotorType.kBrushless);
 
         leftMotorController = new BangBangController();
         rightMotorController = new BangBangController();

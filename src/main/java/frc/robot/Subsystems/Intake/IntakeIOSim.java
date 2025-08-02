@@ -12,6 +12,7 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
+import static frc.robot.Subsystems.Intake.IntakeConstant.*;
 
 public class IntakeIOSim implements IntakeIO {
     
@@ -28,8 +29,8 @@ public class IntakeIOSim implements IntakeIO {
         null);
         armSim = new SingleJointedArmSim(LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 1, 1), DCMotor.getNEO(1), 1, 1, 1, 1, true, 1, null);
         
-        speedPidController = new PIDController(0.1, 0, 0);
-        positionController = new PIDController(0.1, 0, 0);
+        speedPidController = WHEEL_CONTROLLER.get();
+        positionController = PIVOT_CONTROLLER.get();
         targetSpeed = RotationsPerSecond.zero();
         targetPosition = Degree.zero();
 
