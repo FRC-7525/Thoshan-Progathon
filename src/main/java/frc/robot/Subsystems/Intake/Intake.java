@@ -7,6 +7,7 @@ package frc.robot.Subsystems.Intake;
 import static frc.robot.GlobalConstants.ROBOT_MODE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.team7525.subsystem.Subsystem;
 
 public class Intake extends Subsystem<IntakeStates> {
@@ -42,7 +43,10 @@ public class Intake {
 >>>>>>> 9872d74 (ghjg)
 =======
 
+=======
+>>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
 import org.team7525.subsystem.Subsystem;
+
 
 public class Intake extends Subsystem<IntakeStates> {
     IntakeIO io;
@@ -56,8 +60,9 @@ public class Intake extends Subsystem<IntakeStates> {
     }
     @Override
     protected void runState() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'runState'");
+        io.setPosition(getState().getPostition());
+        io.setWheelSpeed(getState().getWheelSpeed());
+        io.logData();
     }
 >>>>>>> 3d33c3b (Done with intake subsystem)
 }

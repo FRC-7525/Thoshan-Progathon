@@ -9,6 +9,7 @@ import edu.wpi.first.units.measure.AngularVelocity;
 
 public interface IntakeIO {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void setWheelSpeed(AngularVelocity wheelSpeed);
 
 	public void setPosition(Angle position);
@@ -21,6 +22,9 @@ public class IntakeIO {
 }
 =======
 
+=======
+    
+>>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
     public void setWheelSpeed(AngularVelocity wheelSpeed);
     public void setPosition(Angle position);
 

@@ -9,6 +9,7 @@ public class Shooter extends Subsystem<ShooterStates> {
 	ShooterIO io;
 	private static Shooter instance;
 
+<<<<<<< HEAD
 	private Shooter() {
 		super("Shooter", ShooterStates.IDLE);
 		this.io = switch (ROBOT_MODE) {
@@ -30,4 +31,12 @@ public class Shooter extends Subsystem<ShooterStates> {
 		io.setWheelSpeed(getState().getWheelSpeed());
 		io.logData();
 	}
+=======
+    @Override
+    protected void runState() {
+        io.setWheelSpeed(getState().getWheelSpeed());
+        io.logData();
+    }
+    
+>>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
 }

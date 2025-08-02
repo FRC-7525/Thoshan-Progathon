@@ -72,6 +72,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
+import static frc.robot.Subsystems.Intake.IntakeConstant.*;
 
 public class IntakeIONeo implements IntakeIO {
     
@@ -83,11 +84,11 @@ public class IntakeIONeo implements IntakeIO {
     Angle targetposition;
 
     public IntakeIONeo() {
-        Wheelmotor = new SparkMax(15, MotorType.kBrushless);
-        Pivotmotor = new SparkMax(16, MotorType.kBrushless);
+        Wheelmotor = new SparkMax(WHEEL_MOTOR_DEVICE_ID, MotorType.kBrushless);
+        Pivotmotor = new SparkMax(PIVOT_MOTOR_DEVICEID, MotorType.kBrushless);
 
-        wheelController = new PIDController(0.1, 0, 0);
-        pivotcController = new PIDController(0.1, 0, 0);
+        wheelController = WHEEL_CONTROLLER.get();
+        pivotcController = PIVOT_CONTROLLER.get();
 
     }
     
