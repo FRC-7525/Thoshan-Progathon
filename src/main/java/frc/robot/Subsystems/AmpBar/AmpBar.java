@@ -35,7 +35,8 @@ public class AmpBar extends Subsystem<AmpbarStates> {
 =======
 public class AmpBar extends Subsystem<AmpbarStates>{
     AmpBarIO io;
-    public AmpBar() {
+    private static AmpBar instance;
+    private AmpBar() {
         super("AmpBar", AmpbarStates.IDLE);
         this.io = switch(ROBOT_MODE) {
             case REAL -> new AmpBarIONeo();
@@ -43,6 +44,14 @@ public class AmpBar extends Subsystem<AmpbarStates>{
             case TESTING -> new AmpBarIONeo();
         };
     }
+    
+    public static AmpBar getInstance() {
+		if (instance == null) {
+			instance = new AmpBar();
+		}
+		return instance;
+	}
+    
     @Override
     protected void runState() {
         io.setPosition(getState().getPosition());

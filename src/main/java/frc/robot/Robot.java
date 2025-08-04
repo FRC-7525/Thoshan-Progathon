@@ -13,6 +13,7 @@ import frc.robot.Subsystems.Manager.Manager;
  * this project, you must also update the Main.java file in the project.
  */
 public class Robot extends TimedRobot {
+<<<<<<< HEAD
 
 	/**
 	 * This function is run when the robot is first started up and should be used for any
@@ -21,6 +22,21 @@ public class Robot extends TimedRobot {
 	public Robot() {
 		manager = Manager.getInstance();
 	}
+=======
+  /**
+   * This function is run when the robot is first started up and should be used for any
+   * initialization code.
+   */
+  public Robot() {
+    manager = Manager.getInstance();
+  }
+  Manager manager;
+
+  @Override
+  public void robotPeriodic() {
+    manager.periodic();
+  }
+>>>>>>> 0b09382 (das)
 
 	Manager manager;
 
