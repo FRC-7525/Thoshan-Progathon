@@ -7,7 +7,8 @@ import static frc.robot.GlobalConstants.*;
 
 public class Climber extends Subsystem<ClimberStates>{
     ClimberIO io;
-    public Climber() {
+    private static Climber instance;
+    private Climber() {
         super("Climber", ClimberStates.IDLE);
                 this.io = switch(ROBOT_MODE){
             case REAL -> new ClimberIONeo();
@@ -15,7 +16,12 @@ public class Climber extends Subsystem<ClimberStates>{
             case TESTING -> new ClimberIONeo();
         };
     }
-
+    public static Climber getInstance() {
+		if (instance == null) {
+			instance = new Climber();
+		}
+		return instance;
+	}
 
 
     @Override

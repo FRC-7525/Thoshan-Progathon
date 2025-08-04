@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.XboxController;
 public class Drive extends Subsystem<DriveStates> {
     XboxController XboxController = new XboxController(0); 
     DriveIO io;
+    private static Drive instance;
 
 
-    public Drive() {
+    private Drive() {
         super("Drive", DriveStates.DRIVE_NORMAL);
         this.io = switch (ROBOT_MODE) {
             case REAL -> new DriveIOReal();
@@ -23,6 +24,12 @@ public class Drive extends Subsystem<DriveStates> {
             case TESTING -> new DriveIOReal();   
         };
     }
+    public static Drive getInstance() {
+		if (instance == null) {
+			instance = new Drive();
+		}
+		return instance;
+	}
     @Override
     protected void runState() {
         io.setTransistionalMultiplier(getState().transationalMultiplier);

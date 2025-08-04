@@ -6,7 +6,8 @@ import static frc.robot.GlobalConstants.ROBOT_MODE;
 public class Shooter extends Subsystem<ShooterStates> {
 
     ShooterIO io;
-    public Shooter() {
+    private static Shooter instance;
+    private Shooter() {
         super("Shooter", ShooterStates.IDLE);
         this.io = switch(ROBOT_MODE){
             case REAL -> new ShooterIONeo();
@@ -15,6 +16,12 @@ public class Shooter extends Subsystem<ShooterStates> {
         };
             
     }
+    public static Shooter getInstance() {
+		if (instance == null) {
+			instance = new Shooter();
+		}
+		return instance;
+	}
 
     @Override
     protected void runState() {

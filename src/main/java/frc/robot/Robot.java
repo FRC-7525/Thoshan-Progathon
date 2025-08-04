@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.Subsystems.Manager.Manager;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -16,10 +17,15 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
-  public Robot() {}
+  public Robot() {
+    manager = Manager.getInstance();
+  }
+  Manager manager;
 
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    manager.periodic();
+  }
 
   @Override
   public void autonomousInit() {}
