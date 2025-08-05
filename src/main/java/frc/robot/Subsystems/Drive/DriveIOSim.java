@@ -1,5 +1,3 @@
 package frc.robot.Subsystems.Drive;
 
-public class DriveIOSim extends DriveIOReal {
-    
-}
+public class DriveIOSim extends DriveIOReal {}

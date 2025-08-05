@@ -1,7 +1,3 @@
 package frc.robot.Subsystems.Manager;
 
-
-
-public class ManagerConstants {
-    
-}
+public class ManagerConstants {}

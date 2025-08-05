@@ -4,10 +4,9 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 
 public interface IntakeIO {
-    
-    public void setWheelSpeed(AngularVelocity wheelSpeed);
-    public void setPosition(Angle position);
+	public void setWheelSpeed(AngularVelocity wheelSpeed);
 
-    void logData();
-    
-} 
+	public void setPosition(Angle position);
+
+	void logData();
+}
