@@ -39,13 +39,14 @@ public class AmpBarConstants {
 import java.util.function.Supplier;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 
 public class AmpBarConstants {
-    public final static Angle SCORRING_POSITION = Degree.of(90);
+    public final static Angle SCORRING_POSITION = Degree.of(-79);
     public final static Angle IDLE_POSITION = Degree.of(0);
-    public final static Angle LOADING_POSITION = Degree.of(90);
+    public final static Angle LOADING_POSITION = Degree.of(-79);
 
     public final static AngularVelocity SCORRINGT_VELOCITY = RotationsPerSecond.of(60);
     public final static AngularVelocity IDLE_VELOCITY = RotationsPerSecond.of(0);
@@ -66,5 +67,14 @@ public class AmpBarConstants {
             case SIM -> new PIDController(0.1, 0, 0);
             case TESTING -> new PIDController(0.1, 0, 0);        
     };
+<<<<<<< HEAD
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
+=======
+
+    public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(
+		-0.317,
+		0,
+		0.525
+	);
+>>>>>>> 6fca02c (changed code to work w akit mech sim)
 }

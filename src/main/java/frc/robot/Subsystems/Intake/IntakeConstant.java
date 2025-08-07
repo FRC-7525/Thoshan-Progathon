@@ -46,6 +46,7 @@ public class IntakeConstant {
 =======
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 
@@ -59,7 +60,7 @@ public class IntakeConstant {
     public static final AngularVelocity PASSING_SPEED = RotationsPerSecond.of(55);
 
     public static final Angle IDLE_ANGLE = Degree.of(0);
-    public static final Angle INTAKING_ANGLE = Degree.of(180);
+    public static final Angle INTAKING_ANGLE = Degree.of(-233);
     public static final Angle PASSING_ANGLE = Degree.of(0);
 
 <<<<<<< HEAD
@@ -81,5 +82,13 @@ public class IntakeConstant {
         case TESTING -> new PIDController(0.1, 0, 0);        
     };
 
+<<<<<<< HEAD
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
+=======
+	public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(
+		0.31,
+		0,
+		0.24
+	);
+>>>>>>> 6fca02c (changed code to work w akit mech sim)
 }

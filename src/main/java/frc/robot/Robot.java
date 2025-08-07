@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.Subsystems.Manager.Manager;
 
@@ -12,6 +16,7 @@ import frc.robot.Subsystems.Manager.Manager;
  * the TimedRobot documentation. If you change the name of this class or the package after creating
  * this project, you must also update the Main.java file in the project.
  */
+<<<<<<< HEAD
 public class Robot extends TimedRobot {
 <<<<<<< HEAD
 
@@ -23,6 +28,9 @@ public class Robot extends TimedRobot {
 		manager = Manager.getInstance();
 	}
 =======
+=======
+public class Robot extends LoggedRobot {
+>>>>>>> 6fca02c (changed code to work w akit mech sim)
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -31,6 +39,12 @@ public class Robot extends TimedRobot {
     manager = Manager.getInstance();
   }
   Manager manager;
+
+  @Override
+  public void robotInit() {
+    Logger.addDataReceiver(new NT4Publisher());
+    Logger.start();
+  }
 
   @Override
   public void robotPeriodic() {

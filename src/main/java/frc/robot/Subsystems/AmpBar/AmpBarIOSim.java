@@ -1,6 +1,7 @@
 package frc.robot.Subsystems.AmpBar;
 
 import static edu.wpi.first.units.Units.RotationsPerSecond;
+import static frc.robot.GlobalConstants.UPDATE_PERIOD;
 import static frc.robot.Subsystems.AmpBar.AmpBarConstants.*;
 
 <<<<<<< HEAD
@@ -9,8 +10,11 @@ import org.littletonrobotics.junction.Logger;
 
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
@@ -83,9 +87,10 @@ public class AmpBarIOSim implements AmpBarIO{
     AngularVelocity targetspeed;
     Angle targetposition;
     public AmpBarIOSim() {
-        armsim = new SingleJointedArmSim(LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 1, 1), DCMotor.getNEO(1), 1, 1, 1, 1, true, 1, null);
-        wheelsim = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1,1), DCMotor.getNEO(1), 
-        null);
+        armsim = new SingleJointedArmSim(LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(2), 0.05, 0.05),
+        DCMotor.getNEO(2), 0.05, .378, -Units.degreesToRadians(114.163329),
+         0, true, -Units.degreesToRadians(114.163329));
+        wheelsim = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1,1), DCMotor.getNEO(1));
 
         pivotController = PIVOT_CONTROLLER.get();
         wheelController = WHEEL_CONTROLLER.get();
@@ -105,10 +110,13 @@ public class AmpBarIOSim implements AmpBarIO{
     }
     @Override
     public void logData() {
-        Logger.recordOutput("AmpBar/wheelspeed", armsim.getAngleRads());
-        Logger.recordOutput("AmpBar/position", wheelsim.getAngularVelocityRPM());
+        armsim.update(UPDATE_PERIOD);
+
+        Logger.recordOutput("AmpBar/position", armsim.getAngleRads());
+        Logger.recordOutput("AmpBar/wheel speed", wheelsim.getAngularVelocityRPM());
         Logger.recordOutput("AmpBar/target speed", targetspeed);
         Logger.recordOutput("AmpBar/target position", targetposition);
+        Logger.recordOutput("AmpBar/Amp Bar Pose3d", new Pose3d(ZEROED_PIVOT_TRANSLATION, new Rotation3d(0, armsim.getAngleRads(), 0)));
     }
 
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)

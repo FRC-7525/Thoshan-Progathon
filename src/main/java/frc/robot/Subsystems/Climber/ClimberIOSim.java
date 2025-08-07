@@ -60,8 +60,7 @@ public class ClimberIOSim implements ClimberIO{
     AngularVelocity targetspeed;
     
     public ClimberIOSim() {
-        motorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 1,1), DCMotor.getNEO(1), 
-        null);
+        motorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 1,1), DCMotor.getNEO(1));
         motorController = MOTOR_CONTROLLER.get();
 
     }
