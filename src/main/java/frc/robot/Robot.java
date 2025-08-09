@@ -4,7 +4,13 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
+import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+
 import frc.robot.Subsystems.Manager.Manager;
 
 /**
@@ -12,7 +18,9 @@ import frc.robot.Subsystems.Manager.Manager;
  * the TimedRobot documentation. If you change the name of this class or the package after creating
  * this project, you must also update the Main.java file in the project.
  */
+<<<<<<< HEAD
 public class Robot extends TimedRobot {
+<<<<<<< HEAD
 
 	/**
 	 * This function is run when the robot is first started up and should be used for any
@@ -21,6 +29,34 @@ public class Robot extends TimedRobot {
 	public Robot() {
 		manager = Manager.getInstance();
 	}
+=======
+=======
+public class Robot extends LoggedRobot {
+<<<<<<< HEAD
+>>>>>>> 6fca02c (changed code to work w akit mech sim)
+=======
+  public static boolean isRedAlliance = true;
+>>>>>>> 7b512c8 (aseas)
+  /**
+   * This function is run when the robot is first started up and should be used for any
+   * initialization code.
+   */
+  public Robot() {
+    manager = Manager.getInstance();
+  }
+  Manager manager;
+
+  @Override
+  public void robotInit() {
+    Logger.addDataReceiver(new NT4Publisher());
+    Logger.start();
+  }
+
+  @Override
+  public void robotPeriodic() {
+    manager.periodic();
+  }
+>>>>>>> 0b09382 (das)
 
 	Manager manager;
 
@@ -38,8 +74,16 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {}
 
+<<<<<<< HEAD
 	@Override
 	public void teleopPeriodic() {}
+=======
+  @Override
+  public void disabledPeriodic() {
+    isRedAlliance = DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red;
+		
+  }
+>>>>>>> 7b512c8 (aseas)
 
 	@Override
 	public void disabledInit() {}

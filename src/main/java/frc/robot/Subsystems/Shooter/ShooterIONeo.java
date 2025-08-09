@@ -10,7 +10,13 @@ import edu.wpi.first.math.controller.BangBangController;
 import edu.wpi.first.units.measure.AngularVelocity;
 import org.littletonrobotics.junction.Logger;
 
+<<<<<<< HEAD
 public class ShooterIONeo implements ShooterIO {
+=======
+import static frc.robot.Subsystems.Shooter.ShooterConstant.*;
+
+public class ShooterIONeo implements ShooterIO{
+>>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
 
 	SparkMax leftMotor;
 	SparkMax rightMotor;
@@ -20,9 +26,16 @@ public class ShooterIONeo implements ShooterIO {
 
 	SparkBaseConfig sparkMaxConfig;
 
+<<<<<<< HEAD
 	public ShooterIONeo() {
 		leftMotor = new SparkMax(LEFT_MOTOR_ID, MotorType.kBrushless);
 		rightMotor = new SparkMax(RIGHT_MOTOR_ID, MotorType.kBrushless);
+=======
+    SparkBaseConfig sparkMaxConfig;
+    public ShooterIONeo() {
+        leftMotor = new SparkMax(LEFT_MOTOR_ID, MotorType.kBrushless);
+        rightMotor = new SparkMax(RIGHT_MOTOR_ID, MotorType.kBrushless);
+>>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
 
 		leftMotorController = new BangBangController();
 		rightMotorController = new BangBangController();
