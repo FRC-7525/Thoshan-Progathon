@@ -27,10 +27,20 @@ public class IntakeIOSim implements IntakeIO {
 	Angle targetPosition;
 
 	public IntakeIOSim() {
-		wheelsim = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1,1), DCMotor.getNEO(1));
-        armSim = new SingleJointedArmSim(LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 0.192383865, 67.5),
-         DCMotor.getNEO(1), 67.5,
-          .3, 0, Units.degreesToRadians(180), true, 0);
+		wheelsim = new FlywheelSim(
+			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
+			DCMotor.getNEO(1)
+		);
+		armSim = new SingleJointedArmSim(
+			LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 0.192383865, 67.5),
+			DCMotor.getNEO(1),
+			67.5,
+			.3,
+			0,
+			Units.degreesToRadians(180),
+			true,
+			0
+		);
 
 		speedPidController = WHEEL_CONTROLLER.get();
 		positionController = PIVOT_CONTROLLER.get();
@@ -63,6 +73,9 @@ public class IntakeIOSim implements IntakeIO {
 		Logger.recordOutput("Intake/Position", armSim.getAngleRads());
 		Logger.recordOutput("Intake/Target position", targetPosition);
 		Logger.recordOutput("Intake/Target speed", targetSpeed);
-		Logger.recordOutput("Intake/Intake Pose3d", new Pose3d(ZEROED_PIVOT_TRANSLATION,new Rotation3d(0, armSim.getAngleRads(), 0)));
+		Logger.recordOutput(
+			"Intake/Intake Pose3d",
+			new Pose3d(ZEROED_PIVOT_TRANSLATION, new Rotation3d(0, armSim.getAngleRads(), 0))
+		);
 	}
 }
