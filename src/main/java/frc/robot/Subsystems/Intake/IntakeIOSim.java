@@ -3,7 +3,7 @@ package frc.robot.Subsystems.Intake;
 import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 import static frc.robot.GlobalConstants.UPDATE_PERIOD;
-import static frc.robot.Subsystems.Intake.IntakeConstant.*;
+import static frc.robot.Subsystems.Intake.IntakeConstants.*;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose3d;

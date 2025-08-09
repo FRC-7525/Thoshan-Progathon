@@ -1,7 +1,7 @@
 package frc.robot.Subsystems.Intake;
 
 import static edu.wpi.first.units.Units.RotationsPerSecond;
-import static frc.robot.Subsystems.Intake.IntakeConstant.*;
+import static frc.robot.Subsystems.Intake.IntakeConstants.*;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;

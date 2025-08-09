@@ -5,6 +5,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 
 public class DriveConstants {
 
+	public static final double MAX_SPEED = 20;
 	public static final double DRIVE_NORMAL_ROTATION_MULTIPLER = 1;
 	public static final double DRIVE_NORMAL_TRANSITIONAL_MULTIPLER = 1;
 	public static final double DRIVE_SLOW_ROTATION_MULTIPLER = 0.5;

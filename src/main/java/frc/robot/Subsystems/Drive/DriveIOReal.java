@@ -19,7 +19,7 @@ public class DriveIOReal implements DriveIO {
 	public DriveIOReal() {
 		try {
 			File directory = new File(Filesystem.getDeployDirectory(), "swerve");
-			double maxSpeed = Units.feetToMeters(12); // your top speed
+			double maxSpeed = Units.feetToMeters(MAX_SPEED); // your top speed
 			swerveDrive = new SwerveParser(directory).createSwerveDrive(
 				maxSpeed,
 				STARTING_POSE
