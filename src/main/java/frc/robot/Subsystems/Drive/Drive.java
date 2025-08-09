@@ -44,9 +44,16 @@ public class Drive extends Subsystem<DriveStates> {
 
 import org.team7525.subsystem.Subsystem;
 
+import com.ctre.phoenix6.Utils;
 
-
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.GlobalConstants.RobotMode;
+import frc.robot.Subsystems.Drive.TunerConstants.TunerSwerveDrivetrain;
+import edu.wpi.first.math.Matrix;
 
 
 public class Drive extends Subsystem<DriveStates> {
@@ -69,6 +76,26 @@ public class Drive extends Subsystem<DriveStates> {
 		}
 		return instance;
 	}
+    public void addVisionMeasurement(Pose2d visionPose, double timestamp, Matrix<N3, N1> visionMeasurementStdDevs) {
+		if (ROBOT_MODE == RobotMode.REAL) {
+			DriveIO.addVisionMeasurement(visionPose, Utils.fpgaToCurrentTime(timestamp), visionMeasurementStdDevs);
+		} 
+        else {
+			DriveIO.addVisionMeasurement(visionPose, timestamp, visionMeasurementStdDevs);}
+        }
+        public ChassisSpeeds getRobotRelativeSpeeds() {
+		    return DriveIO.getDrive().getState().Speeds;
+	    }
+        public Pose2d getPose() {
+            return DriveIO.getDrive().getState().Pose;
+        }
+        public TunerSwerveDrivetrain getDriveTrain() {
+		return DriveIO.getDrive();
+	    }
+    
+		
+
+    
     @Override
     protected void runState() {
         io.setTransistionalMultiplier(getState().transationalMultiplier);
@@ -76,5 +103,9 @@ public class Drive extends Subsystem<DriveStates> {
         io.drivecommands(XboxController.getLeftX(), XboxController.getLeftY(), XboxController.getRightX(), false);
         io.logdata();
     }
+<<<<<<< HEAD
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
+=======
+
+>>>>>>> 7b512c8 (aseas)
 }

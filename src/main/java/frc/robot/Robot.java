@@ -8,7 +8,9 @@ import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.NT4Publisher;
 
-import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+
 import frc.robot.Subsystems.Manager.Manager;
 
 /**
@@ -30,7 +32,11 @@ public class Robot extends TimedRobot {
 =======
 =======
 public class Robot extends LoggedRobot {
+<<<<<<< HEAD
 >>>>>>> 6fca02c (changed code to work w akit mech sim)
+=======
+  public static boolean isRedAlliance = true;
+>>>>>>> 7b512c8 (aseas)
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -68,8 +74,16 @@ public class Robot extends LoggedRobot {
 	@Override
 	public void teleopInit() {}
 
+<<<<<<< HEAD
 	@Override
 	public void teleopPeriodic() {}
+=======
+  @Override
+  public void disabledPeriodic() {
+    isRedAlliance = DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get() == Alliance.Red;
+		
+  }
+>>>>>>> 7b512c8 (aseas)
 
 	@Override
 	public void disabledInit() {}

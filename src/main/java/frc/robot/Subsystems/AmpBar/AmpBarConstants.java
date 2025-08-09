@@ -63,9 +63,9 @@ public class AmpBarConstants {
     };
     public static final Supplier<PIDController> PIVOT_CONTROLLER = () -> 
         switch (ROBOT_MODE) {
-            case REAL -> new PIDController(0.1, 0, 0);
-            case SIM -> new PIDController(0.1, 0, 0);
-            case TESTING -> new PIDController(0.1, 0, 0);        
+            case REAL -> new PIDController(0.01, 0, 0);
+            case SIM -> new PIDController(0.01, 0, 0);
+            case TESTING -> new PIDController(0.01, 0, 0);        
     };
 <<<<<<< HEAD
 >>>>>>> c0b9b56 (Co-authored-by: PotmanNob <PotmanNob@users.noreply.github.com>)
