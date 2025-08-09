@@ -6,8 +6,14 @@ import static frc.robot.GlobalConstants.*;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.math.system.plant.LinearSystemId;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.wpilibj.simulation.FlywheelSim;
+import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
+
 import java.util.function.Supplier;
 
 public class IntakeConstant {
@@ -36,4 +42,19 @@ public class IntakeConstant {
 			case TESTING -> new PIDController(0.1, 0, 0);
 		};
 	public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(0.31, 0, 0.24);
+
+	public static final FlywheelSim WHEEL_SIM = new FlywheelSim(
+		LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
+		DCMotor.getNEO(1)
+	);
+	public static final SingleJointedArmSim ARM_SIM = new SingleJointedArmSim(
+		LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 0.192383865, 67.5),
+		DCMotor.getNEO(1),
+		67.5,
+		.3,
+		0,
+		Units.degreesToRadians(180),
+		true,
+		0
+	);
 }

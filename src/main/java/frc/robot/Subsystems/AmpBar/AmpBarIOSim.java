@@ -26,20 +26,8 @@ public class AmpBarIOSim implements AmpBarIO {
 	Angle targetposition;
 
 	public AmpBarIOSim() {
-		armsim = new SingleJointedArmSim(
-			LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(2), 0.05, 0.05),
-			DCMotor.getNEO(2),
-			0.05,
-			.378,
-			-Units.degreesToRadians(114.163329),
-			0,
-			true,
-			-Units.degreesToRadians(114.163329)
-		);
-		wheelsim = new FlywheelSim(
-			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
-			DCMotor.getNEO(1)
-		);
+		armsim = ARM_SIM;
+		wheelsim = WHEEL_SIM;
 
 		pivotController = PIVOT_CONTROLLER.get();
 		wheelController = WHEEL_CONTROLLER.get();

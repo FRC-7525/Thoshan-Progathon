@@ -13,4 +13,5 @@ public class ShooterConstant {
 
 	public static final int LEFT_MOTOR_ID = 13;
 	public static final int RIGHT_MOTOR_ID = 14;
+	public static final double MAX_VOLTAGE = 12;
 }

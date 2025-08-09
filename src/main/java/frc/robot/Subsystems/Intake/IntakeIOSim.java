@@ -27,20 +27,8 @@ public class IntakeIOSim implements IntakeIO {
 	Angle targetPosition;
 
 	public IntakeIOSim() {
-		wheelsim = new FlywheelSim(
-			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
-			DCMotor.getNEO(1)
-		);
-		armSim = new SingleJointedArmSim(
-			LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 0.192383865, 67.5),
-			DCMotor.getNEO(1),
-			67.5,
-			.3,
-			0,
-			Units.degreesToRadians(180),
-			true,
-			0
-		);
+		wheelsim = WHEEL_SIM;
+		armSim = ARM_SIM;
 
 		speedPidController = WHEEL_CONTROLLER.get();
 		positionController = PIVOT_CONTROLLER.get();

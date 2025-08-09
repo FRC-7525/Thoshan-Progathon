@@ -6,8 +6,14 @@ import static frc.robot.GlobalConstants.ROBOT_MODE;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.math.system.plant.LinearSystemId;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.wpilibj.simulation.FlywheelSim;
+import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
+
 import java.util.function.Supplier;
 
 public class AmpBarConstants {
@@ -40,5 +46,20 @@ public class AmpBarConstants {
 		-0.317,
 		0,
 		0.525
+	);
+
+	public static final SingleJointedArmSim ARM_SIM = new SingleJointedArmSim(
+		LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(2), 0.05, 0.05),
+		DCMotor.getNEO(2),
+		0.05,
+		.378,
+		-Units.degreesToRadians(114.163329),
+		0,
+		true,
+		-Units.degreesToRadians(114.163329)
+	);
+	public static final FlywheelSim WHEEL_SIM = new FlywheelSim(
+		LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
+		DCMotor.getNEO(1)
 	);
 }

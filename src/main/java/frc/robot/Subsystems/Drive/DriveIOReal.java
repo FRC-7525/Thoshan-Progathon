@@ -1,7 +1,7 @@
 package frc.robot.Subsystems.Drive;
 
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
+import static frc.robot.Subsystems.Drive.DriveConstants.*;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Filesystem;
@@ -22,7 +22,7 @@ public class DriveIOReal implements DriveIO {
 			double maxSpeed = Units.feetToMeters(12); // your top speed
 			swerveDrive = new SwerveParser(directory).createSwerveDrive(
 				maxSpeed,
-				new Pose2d(3, 3, Rotation2d.kZero)
+				STARTING_POSE
 			);
 		} catch (Exception e) {
 			System.out.println("hello");
