@@ -6,6 +6,7 @@ import frc.robot.Subsystems.AmpBar.AmpBar;
 import frc.robot.Subsystems.Climber.Climber;
 import frc.robot.Subsystems.Intake.Intake;
 import frc.robot.Subsystems.Shooter.Shooter;
+import frc.robot.Subsystems.Drive.Drive;
 import org.littletonrobotics.junction.Logger;
 import org.team7525.subsystem.Subsystem;
 
@@ -79,5 +80,6 @@ public class Manager extends Subsystem<ManagerStates> {
 		Shooter.getInstance().periodic();
 		Climber.getInstance().periodic();
 		AmpBar.getInstance().periodic();
+		Drive.getInstance().periodic();
 	}
 }

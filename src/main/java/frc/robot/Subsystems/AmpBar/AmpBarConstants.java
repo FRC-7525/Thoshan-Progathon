@@ -5,15 +5,16 @@ import static edu.wpi.first.units.Units.RotationsPerSecond;
 import static frc.robot.GlobalConstants.ROBOT_MODE;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import java.util.function.Supplier;
 
 public class AmpBarConstants {
 
-	public static final Angle SCORRING_POSITION = Degree.of(90);
+	public static final Angle SCORRING_POSITION = Degree.of(-79);
 	public static final Angle IDLE_POSITION = Degree.of(0);
-	public static final Angle LOADING_POSITION = Degree.of(90);
+	public static final Angle LOADING_POSITION = Degree.of(-79);
 
 	public static final AngularVelocity SCORRINGT_VELOCITY = RotationsPerSecond.of(60);
 	public static final AngularVelocity IDLE_VELOCITY = RotationsPerSecond.of(0);
@@ -34,4 +35,10 @@ public class AmpBarConstants {
 			case SIM -> new PIDController(0.1, 0, 0);
 			case TESTING -> new PIDController(0.1, 0, 0);
 		};
+
+  public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(
+		-0.317,
+		0,
+		0.525
+	);
 }
