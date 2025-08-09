@@ -220,8 +220,8 @@ public class Vision extends SubsystemBase {
 			observation.pose().getX() > APRIL_TAG_FIELD_LAYOUT.getFieldLength() ||
 			observation.pose().getY() < 0.0 ||
 			observation.pose().getY() > APRIL_TAG_FIELD_LAYOUT.getFieldWidth() ||
-			observedBarge || // Barge poses mess up vision
-			(observedSource && Manager.getInstance().getState() == ManagerStates.AUTO_ALIGN_CLOSE) || // Source can mess up AA
+			// observedBarge || // Barge poses mess up vision
+			// (observedSource && Manager.getInstance().getState() == ManagerStates.AUTO_ALIGN_CLOSE) || // Source can mess up AA
 			Math.abs(Units.radiansToDegrees(Drive.getInstance().getRobotRelativeSpeeds().omegaRadiansPerSecond)) > MAX_ANGULAR_VELOCITY.in(DegreesPerSecond)
 		); // Robot must not be rotating rapidly
 	}

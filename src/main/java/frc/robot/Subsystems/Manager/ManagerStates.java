@@ -113,7 +113,7 @@ public enum ManagerStates implements SubsystemStates{
     IDLE("Idle",IntakeStates.IDLE, AmpbarStates.IDLE, ShooterStates.IDLE, ClimberStates.IDLE),
     LOADINGSHOOTER("Loading shooter",IntakeStates.PASSING, AmpbarStates.IDLE, ShooterStates.BEING_FED, ClimberStates.IDLE),
     SHOOTING("Shooting",IntakeStates.IDLE, AmpbarStates.IDLE, ShooterStates.SHOOTING, ClimberStates.IDLE),
-    INTAKING("Intaking",IntakeStates.INTAKING, AmpbarStates.IDLE, ShooterStates.IDLE, ClimberStates.IDLE),
+    INTAKING("Intaking",IntakeStates.INTAKING, AmpbarStates.IDLE, ShooterStates.IDLE, ClimberStates.IDLE);
 	
 
     private String stateString;
