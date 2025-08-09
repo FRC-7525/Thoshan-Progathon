@@ -4,12 +4,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.Subsystems.Manager.Manager;
 import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.NT4Publisher;
-
-import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.Subsystems.Manager.Manager;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -23,16 +22,14 @@ public class Robot extends LoggedRobot {
 	 * initialization code.
 	 */
 	Manager manager;
-	public Robot() {
 
-	}
+	public Robot() {}
 
 	@Override
 	public void robotInit() {
 		Logger.addDataReceiver(new NT4Publisher());
-    	Logger.start();
+		Logger.start();
 		manager = Manager.getInstance();
-
 	}
 
 	@Override

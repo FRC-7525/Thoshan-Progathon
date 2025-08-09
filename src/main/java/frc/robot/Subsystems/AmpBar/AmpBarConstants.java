@@ -36,7 +36,7 @@ public class AmpBarConstants {
 			case TESTING -> new PIDController(0.1, 0, 0);
 		};
 
-  public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(
+	public static final Translation3d ZEROED_PIVOT_TRANSLATION = new Translation3d(
 		-0.317,
 		0,
 		0.525
