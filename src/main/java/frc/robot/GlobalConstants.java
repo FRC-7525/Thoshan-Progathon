@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.XboxController;
 
 public class GlobalConstants {
 
+	public static final double UPDATE_PERIOD = 0.02;
 	public static final XboxController xboxController = new XboxController(0);
 
 	public enum RobotMode {

@@ -1,6 +1,6 @@
 package frc.robot.Subsystems.Intake;
 
-import static frc.robot.Subsystems.Intake.IntakeConstant.*;
+import static frc.robot.Subsystems.Intake.IntakeConstants.*;
 
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
