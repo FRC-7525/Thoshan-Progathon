@@ -1,6 +1,7 @@
 package frc.robot.Subsystems.Shooter;
 
 import static edu.wpi.first.units.Units.RotationsPerSecond;
+import static frc.robot.Subsystems.Shooter.ShooterConstant.MAX_VOLTAGE;
 
 import edu.wpi.first.math.controller.BangBangController;
 import edu.wpi.first.math.system.plant.DCMotor;
@@ -18,8 +19,7 @@ public class ShooterIOSim implements ShooterIO {
 	public ShooterIOSim() {
 		wheels = new FlywheelSim(
 			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(2), 1, 1),
-			DCMotor.getNEO(2),
-			null
+			DCMotor.getNEO(2)
 		);
 
 		motorController = new BangBangController();
@@ -29,7 +29,7 @@ public class ShooterIOSim implements ShooterIO {
 	@Override
 	public void setWheelSpeed(AngularVelocity wheelSpeed) {
 		wheels.setInputVoltage(
-			12 *
+			MAX_VOLTAGE *
 			motorController.calculate(
 				wheels.getAngularVelocityRPM() / 60,
 				wheelSpeed.in(RotationsPerSecond)

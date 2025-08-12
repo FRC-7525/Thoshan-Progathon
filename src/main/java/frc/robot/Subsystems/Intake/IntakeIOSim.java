@@ -2,11 +2,15 @@ package frc.robot.Subsystems.Intake;
 
 import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
-import static frc.robot.Subsystems.Intake.IntakeConstant.*;
+import static frc.robot.GlobalConstants.UPDATE_PERIOD;
+import static frc.robot.Subsystems.Intake.IntakeConstants.*;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
@@ -23,22 +27,8 @@ public class IntakeIOSim implements IntakeIO {
 	Angle targetPosition;
 
 	public IntakeIOSim() {
-		wheelsim = new FlywheelSim(
-			LinearSystemId.createFlywheelSystem(DCMotor.getNEO(1), 1, 1),
-			DCMotor.getNEO(1),
-			null
-		);
-		armSim = new SingleJointedArmSim(
-			LinearSystemId.createSingleJointedArmSystem(DCMotor.getNEO(1), 1, 1),
-			DCMotor.getNEO(1),
-			1,
-			1,
-			1,
-			1,
-			true,
-			1,
-			null
-		);
+		wheelsim = WHEEL_SIM;
+		armSim = ARM_SIM;
 
 		speedPidController = WHEEL_CONTROLLER.get();
 		positionController = PIVOT_CONTROLLER.get();
@@ -65,9 +55,15 @@ public class IntakeIOSim implements IntakeIO {
 
 	@Override
 	public void logData() {
+		armSim.update(UPDATE_PERIOD);
+
 		Logger.recordOutput("Intake/Wheel speed", wheelsim.getAngularVelocityRPM());
 		Logger.recordOutput("Intake/Position", armSim.getAngleRads());
 		Logger.recordOutput("Intake/Target position", targetPosition);
 		Logger.recordOutput("Intake/Target speed", targetSpeed);
+		Logger.recordOutput(
+			"Intake/Intake Pose3d",
+			new Pose3d(ZEROED_PIVOT_TRANSLATION, new Rotation3d(0, armSim.getAngleRads(), 0))
+		);
 	}
 }

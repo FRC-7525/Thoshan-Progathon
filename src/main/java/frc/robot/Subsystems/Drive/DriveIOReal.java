@@ -1,5 +1,7 @@
 package frc.robot.Subsystems.Drive;
 
+import static frc.robot.Subsystems.Drive.DriveConstants.*;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Filesystem;
@@ -17,8 +19,8 @@ public class DriveIOReal implements DriveIO {
 	public DriveIOReal() {
 		try {
 			File directory = new File(Filesystem.getDeployDirectory(), "swerve");
-			double maxSpeed = Units.feetToMeters(12); // your top speed
-			swerveDrive = new SwerveParser(directory).createSwerveDrive(maxSpeed);
+			double maxSpeed = Units.feetToMeters(MAX_SPEED); // your top speed
+			swerveDrive = new SwerveParser(directory).createSwerveDrive(maxSpeed, STARTING_POSE);
 		} catch (Exception e) {
 			System.out.println("hello");
 		}

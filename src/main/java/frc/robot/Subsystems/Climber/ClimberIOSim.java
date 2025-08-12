@@ -19,8 +19,7 @@ public class ClimberIOSim implements ClimberIO {
 	public ClimberIOSim() {
 		motorSim = new DCMotorSim(
 			LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 1, 1),
-			DCMotor.getNEO(1),
-			null
+			DCMotor.getNEO(1)
 		);
 		motorController = MOTOR_CONTROLLER.get();
 	}

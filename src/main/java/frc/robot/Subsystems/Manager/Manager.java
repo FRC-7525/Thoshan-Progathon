@@ -4,6 +4,7 @@ import static frc.robot.GlobalConstants.*;
 
 import frc.robot.Subsystems.AmpBar.AmpBar;
 import frc.robot.Subsystems.Climber.Climber;
+import frc.robot.Subsystems.Drive.Drive;
 import frc.robot.Subsystems.Intake.Intake;
 import frc.robot.Subsystems.Shooter.Shooter;
 import org.littletonrobotics.junction.Logger;
@@ -79,5 +80,6 @@ public class Manager extends Subsystem<ManagerStates> {
 		Shooter.getInstance().periodic();
 		Climber.getInstance().periodic();
 		AmpBar.getInstance().periodic();
+		Drive.getInstance().periodic();
 	}
 }

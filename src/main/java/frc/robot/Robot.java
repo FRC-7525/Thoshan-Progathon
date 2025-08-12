@@ -4,25 +4,32 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.Subsystems.Manager.Manager;
+import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
  * the TimedRobot documentation. If you change the name of this class or the package after creating
  * this project, you must also update the Main.java file in the project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends LoggedRobot {
 
 	/**
 	 * This function is run when the robot is first started up and should be used for any
 	 * initialization code.
 	 */
-	public Robot() {
+	Manager manager;
+
+	public Robot() {}
+
+	@Override
+	public void robotInit() {
+		Logger.addDataReceiver(new NT4Publisher());
+		Logger.start();
 		manager = Manager.getInstance();
 	}
-
-	Manager manager;
 
 	@Override
 	public void robotPeriodic() {
