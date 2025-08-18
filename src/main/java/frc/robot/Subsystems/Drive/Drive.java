@@ -2,8 +2,17 @@ package frc.robot.Subsystems.Drive;
 
 import static frc.robot.GlobalConstants.ROBOT_MODE;
 
+import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.GlobalConstants.RobotMode;
+
 import org.team7525.subsystem.Subsystem;
+
+import com.ctre.phoenix6.Utils;
 
 public class Drive extends Subsystem<DriveStates> {
 
@@ -25,6 +34,19 @@ public class Drive extends Subsystem<DriveStates> {
 			instance = new Drive();
 		}
 		return instance;
+	}
+	public void addVisionMeasurement(Pose2d visionPose, double timestamp, Matrix<N3, N1> visionMeasurementStdDevs) {
+		if (ROBOT_MODE == RobotMode.REAL) {
+			DriveIO.addVisionMeasurement(visionPose, Utils.fpgaToCurrentTime(timestamp), visionMeasurementStdDevs);
+		} else {
+			DriveIO.addVisionMeasurement(visionPose, timestamp, visionMeasurementStdDevs);
+		}
+	}
+	public ChassisSpeeds getRobotRelativeSpeeds() {
+		return io.getRelativSpeeds();
+	}
+	public Pose2d getPose() {
+		return io.getPose();
 	}
 
 	@Override

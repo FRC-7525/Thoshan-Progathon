@@ -9,6 +9,7 @@ import frc.robot.Subsystems.Intake.Intake;
 import frc.robot.Subsystems.Shooter.Shooter;
 import org.littletonrobotics.junction.Logger;
 import org.team7525.subsystem.Subsystem;
+import frc.robot.Subsystems.Vision.Vision;
 
 public class Manager extends Subsystem<ManagerStates> {
 
@@ -81,5 +82,6 @@ public class Manager extends Subsystem<ManagerStates> {
 		Climber.getInstance().periodic();
 		AmpBar.getInstance().periodic();
 		Drive.getInstance().periodic();
+		Vision.getInstance().periodic();
 	}
 }

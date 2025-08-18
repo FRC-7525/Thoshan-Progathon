@@ -12,11 +12,11 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
 import frc.robot.Subsystems.Drive.Drive;
+import frc.robot.Subsystems.Vision.VisionIO.PoseObservation;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import org.littletonrobotics.junction.Logger;
 import static frc.robot.Subsystems.Vision.VisionConstants.*;
 
@@ -219,11 +219,8 @@ public class Vision extends SubsystemBase {
 		double degStds;
 		if (observation.tagCount() == 1) {
 			double poseDifference = observation.pose().getTranslation().toTranslation2d().getDistance(Drive.getInstance().getPose().getTranslation());
-			if (seenReefTags(observation) && observation.avgTagArea() > 0.2) {
-				xyStds = 0.5;
-			}
 			// 1 target with large area and close to estimated pose
-			else if (observation.avgTagArea() > 0.8 && poseDifference < 0.5) {
+			if (observation.avgTagArea() > 0.8 && poseDifference < 0.5) {
 				xyStds = 0.5;
 			}
 			// 1 target farther away and estimated pose is close

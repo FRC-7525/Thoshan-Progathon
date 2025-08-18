@@ -2,7 +2,9 @@ package frc.robot.Subsystems.Drive;
 
 import static frc.robot.Subsystems.Drive.DriveConstants.*;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Filesystem;
 import java.io.File;
@@ -59,5 +61,16 @@ public class DriveIOReal implements DriveIO {
 		Logger.recordOutput("Drive/ Transitional Multiplier", transationalMultiplier);
 		Logger.recordOutput("Drive/ Rotation multiplier", rotationMultiplier);
 		Logger.recordOutput("Drive/ Position", swerveDrive.getPose());
+	}
+
+	@Override
+	public ChassisSpeeds getRelativSpeeds() {
+		return ChassisSpeeds.fromFieldRelativeSpeeds(swerveDrive.getRobotVelocity(), swerveDrive.getPose().getRotation());
+		
+	}
+
+	@Override
+	public Pose2d getPose() {
+		return swerveDrive.getPose();
 	}
 }

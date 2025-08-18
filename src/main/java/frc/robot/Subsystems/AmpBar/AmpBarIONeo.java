@@ -6,6 +6,7 @@ import static frc.robot.Subsystems.AmpBar.AmpBarConstants.*;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import org.littletonrobotics.junction.Logger;
@@ -18,6 +19,7 @@ public class AmpBarIONeo implements AmpBarIO {
 	PIDController pivotController;
 	AngularVelocity targetspeed;
 	Angle targetposition;
+	
 
 	public AmpBarIONeo() {
 		wheelMotor = new SparkMax(WHEEL_MOTOR_DEVICE_ID, MotorType.kBrushless);
@@ -25,6 +27,7 @@ public class AmpBarIONeo implements AmpBarIO {
 
 		wheelController = WHEEL_CONTROLLER.get();
 		pivotController = PIVOT_CONTROLLER.get();
+		
 	}
 
 	@Override
