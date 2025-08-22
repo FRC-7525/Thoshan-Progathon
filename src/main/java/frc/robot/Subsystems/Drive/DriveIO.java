@@ -24,9 +24,8 @@ public interface DriveIO {
 	
 	public Pose2d getPose();
 
+
 	public static void addVisionMeasurement(Pose2d pose, double timestamp, Matrix<N3, N1> standardDeviaton) {}
-
-
 
 	public void logdata();
 }

@@ -1,9 +1,12 @@
 package frc.robot.Subsystems.Manager;
 
 import static frc.robot.GlobalConstants.*;
+import static frc.robot.Subsystems.Manager.ManagerStates.*;
 
 import frc.robot.Subsystems.AmpBar.AmpBar;
 import frc.robot.Subsystems.Climber.Climber;
+import frc.robot.Subsystems.Drive.AutoAlign;
+import frc.robot.Subsystems.Drive.AutoAlignStates;
 import frc.robot.Subsystems.Drive.Drive;
 import frc.robot.Subsystems.Intake.Intake;
 import frc.robot.Subsystems.Shooter.Shooter;
@@ -58,6 +61,36 @@ public class Manager extends Subsystem<ManagerStates> {
 		addTrigger(ManagerStates.SHOOTING, ManagerStates.IDLE, () ->
 			xboxController.getXButtonPressed()
 		);
+
+		// Align to source
+		addTrigger(	IDLE, ALIGNTOSOURCE, () -> 
+		xboxController.getLeftBumperButtonPressed());
+
+		addTrigger(	ManagerStates.ALIGNTOSOURCE, ManagerStates.IDLE, () -> 
+		xboxController.getLeftBumperButtonReleased());
+
+		// Align to Speaker
+		addTrigger( IDLE, ALIGNTOSPEAKER, () -> 
+		xboxController.getRightBumperButtonPressed());
+		
+		addTrigger( IDLE, ALIGNTOSPEAKER,
+		xboxController::getRightBumperButtonReleased);
+
+		// Align to AMP 
+		addTrigger( IDLE, ALIGNTOAMP, 
+		xboxController::getStartButtonPressed);
+
+		addTrigger( ALIGNTOAMP, IDLE, 
+		xboxController::getStartButtonReleased);
+
+		// Align to Amp Bar
+		addTrigger( IDLE, ALIGNTOAMPBAR, () ->
+		xboxController.getPOV() == 270);
+
+		addTrigger( ALIGNTOAMPBAR, IDLE, () ->
+		xboxController.getPOV() == 270);
+
+
 	}
 
 	public static Manager getInstance() {
@@ -73,6 +106,7 @@ public class Manager extends Subsystem<ManagerStates> {
 		Shooter.getInstance().setState(getState().getShooterState());
 		Climber.getInstance().setState(getState().getClimberState());
 		AmpBar.getInstance().setState(getState().getAmpBarState());
+		AutoAlign.getInstance().setState(getState().AutoAlignState());
 
 		Logger.recordOutput("Manger/ State tine", getStateTime());
 		Logger.recordOutput("Manager/ State String", getState().getStateString());
@@ -83,5 +117,6 @@ public class Manager extends Subsystem<ManagerStates> {
 		AmpBar.getInstance().periodic();
 		Drive.getInstance().periodic();
 		Vision.getInstance().periodic();
+		AutoAlign.getInstance().periodic();
 	}
 }
