@@ -1,5 +1,6 @@
 package frc.robot.Subsystems.Drive;
 
+import org.littletonrobotics.junction.Logger;
 import org.team7525.subsystem.Subsystem;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -16,7 +17,8 @@ public class AutoAlign extends Subsystem<AutoAlignStates>{
     
 
     private final ProfiledPIDController rotationalController;
-    private final ProfiledPIDController translationalController;
+    private final ProfiledPIDController xtranslationalController;
+    private final ProfiledPIDController ytranslationalController;
 
     private PosePair targetPose;
     private Pose2d goalPose;
@@ -29,13 +31,16 @@ public class AutoAlign extends Subsystem<AutoAlignStates>{
     private AutoAlign() {
         super("AutoAlign", AutoAlignStates.OFF); 
         this.rotationalController = ROTATIONAL_CONTROLLER.get();
-        this.translationalController = TRANSITIONAL_CONTROLLER.get();
+        this.xtranslationalController = XTRANSITIONAL_CONTROLLER.get();
+        this.ytranslationalController = YTRANSITIONAL_CONTROLLER.get();
 
 
         targetPose = new PosePair(null, null);
         goalPose = new Pose2d(null, null);
         SmartDashboard.putData("Rotaitonal Cotroller", rotationalController);
-		SmartDashboard.putData("Transisitional Controller", translationalController);
+		SmartDashboard.putData("Y Transisitional Controller", ytranslationalController);
+        SmartDashboard.putData("X Transisitional Controller", xtranslationalController);
+        
     
     }
     public static AutoAlign getInstance() {
@@ -48,7 +53,7 @@ public class AutoAlign extends Subsystem<AutoAlignStates>{
     @Override
     protected void runState() {
         targetPose = getState().getLocation();
-        if (DriverStation.getAlliance().get() == Alliance.Red) {
+        if (!DriverStation.getAlliance().isEmpty() && DriverStation.getAlliance().get() == Alliance.Red) {
             goalPose = targetPose.getRedPose();
         } else {
             goalPose = targetPose.getBluePose();
@@ -56,10 +61,12 @@ public class AutoAlign extends Subsystem<AutoAlignStates>{
         Pose2d currentPose = Drive.getInstance().getPose();
         if (!(AutoAlignStates.OFF == getState())) {
         Drive.getInstance().driverobotAutoAlign( 
-            translationalController.calculate(currentPose.getX(), goalPose.getX()),
-            translationalController.calculate(currentPose.getY(), goalPose.getY()),
+            xtranslationalController.calculate(currentPose.getX(), goalPose.getX()),
+            ytranslationalController.calculate(currentPose.getY(), goalPose.getY()),
             rotationalController.calculate(currentPose.getRotation().getDegrees(), goalPose.getRotation().getDegrees()));
         }
+
+        Logger.recordOutput("Target Pose", goalPose);
     }
 
 }

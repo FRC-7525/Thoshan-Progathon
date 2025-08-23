@@ -121,7 +121,7 @@ public enum ManagerStates implements SubsystemStates {
 		this.ampbarState = ampbarState;
 		this.shooterstate = shooterstate;
 		this.climberState = climberState;
-		this.autoAlignStates = autoAlignStates;
+		this.autoAlignStates = AutoAlignState;
 	}
 
 	public String getStateString() {

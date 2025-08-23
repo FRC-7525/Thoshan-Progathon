@@ -6,7 +6,7 @@ import static frc.robot.Subsystems.Manager.ManagerStates.*;
 import frc.robot.Subsystems.AmpBar.AmpBar;
 import frc.robot.Subsystems.Climber.Climber;
 import frc.robot.Subsystems.Drive.AutoAlign;
-import frc.robot.Subsystems.Drive.AutoAlignStates;
+
 import frc.robot.Subsystems.Drive.Drive;
 import frc.robot.Subsystems.Intake.Intake;
 import frc.robot.Subsystems.Shooter.Shooter;
@@ -73,7 +73,7 @@ public class Manager extends Subsystem<ManagerStates> {
 		addTrigger( IDLE, ALIGNTOSPEAKER, () -> 
 		xboxController.getRightBumperButtonPressed());
 		
-		addTrigger( IDLE, ALIGNTOSPEAKER,
+		addTrigger( ALIGNTOSPEAKER, IDLE,
 		xboxController::getRightBumperButtonReleased);
 
 		// Align to AMP 
