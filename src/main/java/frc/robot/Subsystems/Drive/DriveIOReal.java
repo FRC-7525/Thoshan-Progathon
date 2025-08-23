@@ -43,7 +43,7 @@ public class DriveIOReal implements DriveIO {
 		double xtranslation,
 		double ytranslation,
 		double rotation,
-		boolean feldRealative
+		boolean fieldRelative
 	) {
 		swerveDrive.drive(
 			new Translation2d(
@@ -51,10 +51,22 @@ public class DriveIOReal implements DriveIO {
 				transationalMultiplier * ytranslation
 			),
 			rotationMultiplier * rotation,
-			false,
-			true
+			fieldRelative,
+			false
 		);
 	}
+
+	public void driveAutoAlign(double x, double y, double rot) {
+		swerveDrive.drive(
+			new Translation2d(x, y),
+			rot,
+			true,
+			false
+		);
+		
+	}
+
+	
 
 	@Override
 	public void logdata() {

@@ -18,6 +18,8 @@ public interface DriveIO {
 		double rotation,
 		boolean feldRealative
 	);
+
+	public void driveAutoAlign(double x, double y, double rot);
 	
 
 	public ChassisSpeeds getRelativSpeeds();

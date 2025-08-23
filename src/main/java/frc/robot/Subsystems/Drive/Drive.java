@@ -57,7 +57,7 @@ public class Drive extends Subsystem<DriveStates> {
 			);
 	}
 	public void driverobotAutoAlign(double x, double y, double rotation) {
-		io.drivecommands( x, y, rotation, true);
+		io.driveAutoAlign( x, y, rotation);
 	}
 
 	@Override
